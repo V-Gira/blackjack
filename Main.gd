@@ -1,5 +1,7 @@
 extends Control
 
+export var DarkTheme : Theme
+export var LightTheme : Theme
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,4 +14,11 @@ func _ready():
 
 
 func _on_Theme_button_up():
-	pass # Replace with function body.
+	if $Panel.theme == DarkTheme:
+		$Panel.theme = LightTheme
+	else:
+		$Panel.theme = DarkTheme
+
+
+func _on_Button_color_changed(color):
+	pass
