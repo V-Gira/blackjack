@@ -149,16 +149,6 @@ margin_right = -5.0
 margin_bottom = -5.0
 tab_align = 0
 
-[node name="Theme" type="Button" parent="Panel"]
-margin_left = 272.0
-margin_top = 30.0
-margin_right = 294.0
-margin_bottom = 57.0
-text = "T"
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="WindowDialog" type="WindowDialog" parent="Panel"]
 visible = true
 anchor_left = 0.5
@@ -270,7 +260,37 @@ margin_bottom = 27.0
 size_flags_horizontal = 3
 text = "Hit me!"
 
+[node name="PanelContainer3" type="PanelContainer" parent="Panel/WindowDialog"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = 93.0
+margin_bottom = 129.0
+
+[node name="Panel" type="Panel" parent="Panel/WindowDialog/PanelContainer3"]
+margin_left = 6.0
+margin_top = 4.0
+margin_right = 275.0
+margin_bottom = 32.0
+
+[node name="Text" type="Label" parent="Panel/WindowDialog/PanelContainer3/Panel"]
+anchor_right = 1.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+align = 1
+valign = 1
+
+[node name="Theme" type="Button" parent="Panel"]
+margin_left = 272.0
+margin_top = 30.0
+margin_right = 294.0
+margin_bottom = 57.0
+text = "T"
+__meta__ = {
+"_edit_lock_": true
+}
+
 [connection signal="pressed" from="Panel/TabContainer/Agent/GridContainer/Button2" to="Panel/WindowDialog" method="_on_Button2_pressed"]
-[connection signal="button_up" from="Panel/Theme" to="." method="_on_Theme_button_up"]
 [connection signal="popup_hide" from="Panel/WindowDialog" to="Panel/WindowDialog" method="_on_WindowDialog_popup_hide"]
 [connection signal="pressed" from="Panel/WindowDialog/PanelContainer2/GridContainer/Button" to="Panel/WindowDialog" method="_on_Button_pressed"]
+[connection signal="button_up" from="Panel/Theme" to="." method="_on_Theme_button_up"]
