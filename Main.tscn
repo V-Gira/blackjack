@@ -149,6 +149,16 @@ margin_right = -5.0
 margin_bottom = -5.0
 tab_align = 0
 
+[node name="Theme" type="Button" parent="Panel"]
+margin_left = 272.0
+margin_top = 30.0
+margin_right = 294.0
+margin_bottom = 57.0
+text = "T"
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="WindowDialog" type="WindowDialog" parent="Panel"]
 visible = true
 anchor_left = 0.5
@@ -161,10 +171,34 @@ margin_right = 140.5
 margin_bottom = 169.0
 window_title = "Draw a card"
 script = ExtResource( 5 )
-__meta__ = {
-"_edit_group_": true
-}
 card_scene = ExtResource( 6 )
+
+[node name="PanelContainer4" type="PanelContainer" parent="Panel/WindowDialog"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -74.0
+margin_bottom = -37.0
+
+[node name="Panel" type="Panel" parent="Panel/WindowDialog/PanelContainer4"]
+margin_left = 6.0
+margin_top = 4.0
+margin_right = 275.0
+margin_bottom = 33.0
+
+[node name="Momentum" type="ProgressBar" parent="Panel/WindowDialog/PanelContainer4/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -130.0
+margin_top = -9.5
+margin_right = 130.0
+margin_bottom = 9.5
+max_value = 4.0
+step = 1.0
+value = 2.0
+percent_visible = false
 
 [node name="PanelContainer" type="PanelContainer" parent="Panel/WindowDialog"]
 anchor_right = 1.0
@@ -187,7 +221,7 @@ margin_bottom = 27.0
 size_flags_horizontal = 3
 text = "Target:"
 
-[node name="Label2" type="Label" parent="Panel/WindowDialog/PanelContainer/Panel/GridContainer"]
+[node name="Target" type="Label" parent="Panel/WindowDialog/PanelContainer/Panel/GridContainer"]
 margin_left = 136.0
 margin_right = 268.0
 margin_bottom = 27.0
@@ -199,9 +233,9 @@ margin_top = 31.0
 margin_right = 132.0
 margin_bottom = 58.0
 size_flags_horizontal = 3
-text = "Momentum:"
+text = "Diamonds:"
 
-[node name="Label4" type="Label" parent="Panel/WindowDialog/PanelContainer/Panel/GridContainer"]
+[node name="Diamonds" type="Label" parent="Panel/WindowDialog/PanelContainer/Panel/GridContainer"]
 margin_left = 136.0
 margin_top = 31.0
 margin_right = 268.0
@@ -280,17 +314,7 @@ size_flags_horizontal = 3
 align = 1
 valign = 1
 
-[node name="Theme" type="Button" parent="Panel"]
-margin_left = 272.0
-margin_top = 30.0
-margin_right = 294.0
-margin_bottom = 57.0
-text = "T"
-__meta__ = {
-"_edit_lock_": true
-}
-
 [connection signal="pressed" from="Panel/TabContainer/Agent/GridContainer/Button2" to="Panel/WindowDialog" method="_on_Button2_pressed"]
+[connection signal="button_up" from="Panel/Theme" to="." method="_on_Theme_button_up"]
 [connection signal="popup_hide" from="Panel/WindowDialog" to="Panel/WindowDialog" method="_on_WindowDialog_popup_hide"]
 [connection signal="pressed" from="Panel/WindowDialog/PanelContainer2/GridContainer/Button" to="Panel/WindowDialog" method="_on_Button_pressed"]
-[connection signal="button_up" from="Panel/Theme" to="." method="_on_Theme_button_up"]

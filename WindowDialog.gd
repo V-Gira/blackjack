@@ -6,6 +6,12 @@ var offset = 0
 
 var item = {}
 
+onready var Target = get_node("PanelContainer/Panel/GridContainer/Target")
+
+onready var Momentum = get_node("PanelContainer4/Panel/Momentum")
+
+onready var Diamonds = get_node("PanelContainer/Panel/GridContainer/Diamonds")
+
 onready var Score = get_node("PanelContainer/Panel/GridContainer/Score")
 
 onready var Text = get_node("PanelContainer3/Panel/Text")
@@ -25,6 +31,7 @@ func _on_Button_pressed():
 	item = deck.pop_front()
 	Score.text = str(item.value + int(Score.text))
 	Text.text = item.string
+	update_Momentum("club", item)
 	draw_card(item.frame)
 
 func draw_card(card_frame):	
@@ -44,7 +51,21 @@ func _on_WindowDialog_popup_hide():
 	for n in $Position2D.get_children():
 		n.queue_free()
 
+func update_Momentum(suit, card):
+	if card.suit == "diamond":
+		Diamonds.text = str(int(Diamonds.text) + 1)
+	if suit == card.suit:
+		Momentum.value += 1
+	if int(Score.text) >= int(Target.text):
+		Momentum.value += 2
+
 func reset_deck():
+	for n in $Position2D.get_children():
+		n.queue_free()
+	offset = 0
+	Momentum.value = 0
+	Score.text = "0"
+	Text.text = ""
 	deck = [
 	{"frame" : 0, "suit" : "heart", "string" : "Ace of Hearts", "value" : 1},
 	{"frame" : 1, "suit" : "heart", "string" : "2 of Hearts", "value" : 2},
