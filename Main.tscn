@@ -99,7 +99,7 @@ margin_left = 152.0
 margin_top = 31.0
 margin_right = 228.0
 margin_bottom = 58.0
-text = "♣♣♣♣"
+text = "♣♣♧♧"
 
 [node name="Spade" type="Label" parent="Panel/TabContainer/Agent/GridContainer"]
 margin_top = 62.0
@@ -113,7 +113,7 @@ margin_left = 152.0
 margin_top = 62.0
 margin_right = 228.0
 margin_bottom = 89.0
-text = "♠♠♠♠"
+text = "♠♠♤♤"
 
 [node name="Heart" type="Label" parent="Panel/TabContainer/Agent/GridContainer"]
 margin_top = 93.0
@@ -127,7 +127,7 @@ margin_left = 152.0
 margin_top = 93.0
 margin_right = 228.0
 margin_bottom = 120.0
-text = "♥♥♥♥"
+text = "♥♥♡♡"
 
 [node name="Bounty" type="Tabs" parent="Panel/TabContainer"]
 visible = false
@@ -149,18 +149,7 @@ margin_right = -5.0
 margin_bottom = -5.0
 tab_align = 0
 
-[node name="Theme" type="Button" parent="Panel"]
-margin_left = 272.0
-margin_top = 30.0
-margin_right = 294.0
-margin_bottom = 57.0
-text = "T"
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="WindowDialog" type="WindowDialog" parent="Panel"]
-visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -195,7 +184,7 @@ margin_left = -130.0
 margin_top = -9.5
 margin_right = 130.0
 margin_bottom = 9.5
-max_value = 4.0
+max_value = 6.0
 step = 1.0
 value = 2.0
 percent_visible = false
@@ -314,7 +303,17 @@ size_flags_horizontal = 3
 align = 1
 valign = 1
 
+[node name="Theme" type="Button" parent="Panel"]
+margin_left = 272.0
+margin_top = 30.0
+margin_right = 294.0
+margin_bottom = 57.0
+text = "T"
+__meta__ = {
+"_edit_lock_": true
+}
+
 [connection signal="pressed" from="Panel/TabContainer/Agent/GridContainer/Button2" to="Panel/WindowDialog" method="_on_Button2_pressed"]
-[connection signal="button_up" from="Panel/Theme" to="." method="_on_Theme_button_up"]
 [connection signal="popup_hide" from="Panel/WindowDialog" to="Panel/WindowDialog" method="_on_WindowDialog_popup_hide"]
 [connection signal="pressed" from="Panel/WindowDialog/PanelContainer2/GridContainer/Button" to="Panel/WindowDialog" method="_on_Button_pressed"]
+[connection signal="button_up" from="Panel/Theme" to="." method="_on_Theme_button_up"]

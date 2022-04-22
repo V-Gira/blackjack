@@ -6,6 +6,8 @@ var offset = 0
 
 var item = {}
 
+var hit = 0
+
 onready var Target = get_node("PanelContainer/Panel/GridContainer/Target")
 
 onready var Momentum = get_node("PanelContainer4/Panel/Momentum")
@@ -22,7 +24,7 @@ var deck = []
 
 func _ready():
 	randomize()
-	reset_deck()
+	reset()
 
 func _on_Button2_pressed():
 	popup()
@@ -44,12 +46,7 @@ func draw_card(card_frame):
 
 
 func _on_WindowDialog_popup_hide():
-	offset = 0
-	Score.text = "0"
-	Text.text = ""
-	reset_deck()
-	for n in $Position2D.get_children():
-		n.queue_free()
+	reset()
 
 func update_Momentum(suit, card):
 	if card.suit == "diamond":
@@ -57,12 +54,15 @@ func update_Momentum(suit, card):
 	if suit == card.suit:
 		Momentum.value += 1
 	if int(Score.text) >= int(Target.text):
+		hit += 1
+	if hit == 1:
 		Momentum.value += 2
 
-func reset_deck():
+func reset():
 	for n in $Position2D.get_children():
 		n.queue_free()
 	offset = 0
+	hit = 0
 	Momentum.value = 0
 	Score.text = "0"
 	Text.text = ""
